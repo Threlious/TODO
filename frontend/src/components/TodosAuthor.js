@@ -25,8 +25,8 @@ const TodoItem = ({todo}) => {
 }
 
 const TodosAuthor = ({todos}) => {
-    let {id} = useParams()
-    let filter_todos = todos.filter(todo => todo.user === parseInt(id))
+    let {authorId} = useParams()
+    let filter_todos = todos.filter((todo) => todo.user === parseInt(authorId))
     return (
         <table>
             <th>

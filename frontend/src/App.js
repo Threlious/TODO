@@ -10,8 +10,7 @@ import ProjectList from "./components/projects";
 
 import React from "react";
 import axios from "axios";
-import {HashRouter, Route, Link, Switch, BrowserRouter, Redirect} from "react-router-dom";
-import {renderToStaticMarkup} from "react-dom/server";
+import {Route, Link, BrowserRouter, Routes} from "react-router-dom";
 
 
 class App extends React.Component {
@@ -62,16 +61,19 @@ class App extends React.Component {
                             </li>
                         </ul>
                     </nav>
-                    <Switch>
-                        <Route exact path='/' component={() => <AuthorList authors={this.state.authors}/>}></Route>
-                        <Route exact path='/todos' component={() => <TodoList todos={this.state.todos}/>}></Route>
-                        <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}></Route>
-                        <Route path='/author/:id'>
-                            <TodosAuthor todos={this.state.todos}/>
+                    <Routes>
+                        <Route exact path='/' element={<AuthorList authors={this.state.authors}/>}/>
+                        <Route exact path='/todos' element={<TodoList todos={this.state.todos}/>}/>
+                        <Route exact path='/projects' element={<ProjectList projects={this.state.projects}/>}/>
+                        <Route path='/authors'>
+                            <Route index element={<AuthorList authors={this.state.authors} />} />
+                            <Route path=':authorId' element={<TodosAuthor todos={this.state.todos} />} />
                         </Route>
-                        <Redirect from='/todo' to='/todos'></Redirect>
-                        <Route component={NotFound404}></Route>
-                    </Switch>
+                        {/*<Route path='/author/:id'>*/}
+                        {/*    <TodosAuthor todos={this.state.todos}/>*/}
+                        {/*</Route>*/}
+                        {/*<Route path='*' element={<NotFound404/>}/>*/}
+                    </Routes>
                 </BrowserRouter>
                 {/*<Footer/>*/}
             </div>
