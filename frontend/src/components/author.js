@@ -1,11 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 
 const AuthorItem = ({author}) => {
     return (
         <tr>
             <td>
-                {author.first_name}
+                <Link to={`/author/${author.id}`}>{author.first_name}</Link>
             </td>
             <td>
                 {author.last_name}
@@ -23,18 +24,20 @@ const AuthorItem = ({author}) => {
 const AuthorList = ({authors}) => {
     return (
         <table>
-            <th>
-                First name
-            </th>
-            <th>
-                Last name
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Username
-            </th>
+            <tr>
+                <th>
+                    First name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Username
+                </th>
+            </tr>
             {authors.map((author) => <AuthorItem author={author}/>)}
         </table>
     )

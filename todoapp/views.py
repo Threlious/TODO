@@ -3,7 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import LimitOffsetPagination
 
 from .models import TODO, Project
-from .serializers import TODOHyperlinkedModelSerializer, ProjectHyperlinkedModelSerializer
+from .serializers import TODOModelSerializer, ProjectHyperlinkedModelSerializer
 from .filters import ProjectFilter
 
 
@@ -17,7 +17,7 @@ class TODOLimitOffsetPagination(LimitOffsetPagination):
 
 class TODOModelViewSet(ModelViewSet):
     queryset = TODO.objects.all()
-    serializer_class = TODOHyperlinkedModelSerializer
+    serializer_class = TODOModelSerializer
     pagination_class = TODOLimitOffsetPagination
     filterset_fields = ['project', ]
 
@@ -25,7 +25,7 @@ class TODOModelViewSet(ModelViewSet):
         todo = self.get_object()
         todo.active = False
         todo.save()
-        serializer = TODOHyperlinkedModelSerializer(todo, context={'request': request})
+        serializer = TODOModelSerializer(todo, context={'request': request})
         return Response(serializer.data)
 
 
