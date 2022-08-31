@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import LimitOffsetPagination
 
+from authors.views import SuperUserOnly
 from .models import TODO, Project
 from .serializers import TODOModelSerializer, ProjectHyperlinkedModelSerializer
 from .filters import ProjectFilter
@@ -20,6 +21,7 @@ class TODOModelViewSet(ModelViewSet):
     serializer_class = TODOModelSerializer
     pagination_class = TODOLimitOffsetPagination
     filterset_fields = ['project', ]
+    # permission_classes = [SuperUserOnly, ]
 
     def destroy(self, request, *args, **kwargs):
         todo = self.get_object()
