@@ -21,7 +21,7 @@ class TODOModelViewSet(ModelViewSet):
     serializer_class = TODOModelSerializer
     pagination_class = TODOLimitOffsetPagination
     filterset_fields = ['project', ]
-    # permission_classes = [SuperUserOnly, ]
+    permission_classes = [SuperUserOnly, ]
 
     def destroy(self, request, *args, **kwargs):
         todo = self.get_object()
