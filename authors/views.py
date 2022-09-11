@@ -15,7 +15,7 @@ class SuperUserOnly(BasePermission):
 
 
 class UserCustomViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin,
-                        mixins.UpdateModelMixin):
-    queryset = User.objects.all()
+                        mixins.UpdateModelMixin, mixins.CreateModelMixin):
+    queryset = User.objects.all().order_by('username')
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     serializer_class = UserModelSerializer

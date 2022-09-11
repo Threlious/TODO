@@ -6,7 +6,7 @@ from authors.models import User
 class Project(models.Model):
     name = models.CharField(max_length=32, unique=True)
     repository_link = models.CharField(max_length=100)
-    users = models.ManyToManyField(User)
+    users = models.ManyToManyField(User, null=True, blank=True)
 
     def __str__(self):
         return self.name
