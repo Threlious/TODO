@@ -12,13 +12,9 @@ class LoginForm extends React.Component {
                 [event.target.name]: event.target.value
             }
         );
-        // console.log(event.target.value)
-        // console.log(event.target.name)
-        // console.log(this.state.login + ' ' + this.state.password)
     }
 
     handleSubmit(event) {
-        // console.log(this.state.login + ' ' + this.state.password)
         this.props.get_token(this.state.login, this.state.password)
         event.preventDefault()
     }
