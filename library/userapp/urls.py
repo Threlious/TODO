@@ -1,6 +1,6 @@
 from django.urls import path
 
-from userapp.views import UserListAPIView
+from library.userapp.views import UserListAPIView
 
 app_name = 'userapp'
 

@@ -2,7 +2,7 @@ import graphene
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
 
-from todoapp.models import TODO, Project
+from library.todoapp.models import TODO, Project
 from .models import User
 
 

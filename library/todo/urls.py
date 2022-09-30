@@ -23,8 +23,8 @@ from rest_framework.authtoken import views
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-from authors.views import UserCustomViewSet
-from todoapp.views import TODOModelViewSet, ProjectModelViewSet
+from library.authors import UserCustomViewSet
+from library.todoapp.views import TODOModelViewSet, ProjectModelViewSet
 
 router = DefaultRouter()
 router.register('authors', UserCustomViewSet)
@@ -49,8 +49,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', views.obtain_auth_token),
 
-    path('api/users/v1', include('userapp.urls', namespace='v1')),
-    path('api/users/v2', include('userapp.urls', namespace='v2')),
+    path('api/users/v1', include('library.userapp.urls', namespace='v1')),
+    path('api/users/v2', include('library.userapp.urls', namespace='v2')),
 
     path('swagger<str:format>/', schema_view.without_ui()),
     path('swagger/', schema_view.with_ui('swagger')),
@@ -59,5 +59,5 @@ urlpatterns = [
 
     path("graphql/", GraphQLView.as_view(graphiql=True)),
 
-    path('', TemplateView.as_view(template_name='index.html'))
+    path('', TemplateView.as_view(template_name='../../frontend/build/index.html'))
 ]

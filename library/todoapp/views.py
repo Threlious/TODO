@@ -2,7 +2,6 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.pagination import LimitOffsetPagination
 
-from authors.views import SuperUserOnly
 from .models import TODO, Project
 from .serializers import TODOModelSerializer, ProjectHyperlinkedModelSerializer
 from .filters import ProjectFilter
