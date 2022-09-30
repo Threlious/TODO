@@ -1,4 +1,2 @@
-venv
-db.sqlite3
-.idea
-todo/.env
+/venv/
+/library/todo/.env
